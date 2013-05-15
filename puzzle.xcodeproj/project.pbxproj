@@ -19,6 +19,7 @@
 		7C706BED17425B3E00C4879D /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C706BEB17425B3E00C4879D /* MainStoryboard_iPhone.storyboard */; };
 		7C706BF017425B3E00C4879D /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C706BEE17425B3E00C4879D /* MainStoryboard_iPad.storyboard */; };
 		7C706BF317425B3E00C4879D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C706BF217425B3E00C4879D /* ViewController.m */; };
+		7CD96A271743C10E002C3F97 /* Puzzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD96A261743C10E002C3F97 /* Puzzle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		7C706BEF17425B3E00C4879D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		7C706BF117425B3E00C4879D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		7C706BF217425B3E00C4879D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7CD96A251743C10E002C3F97 /* Puzzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Puzzle.h; sourceTree = "<group>"; };
+		7CD96A261743C10E002C3F97 /* Puzzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Puzzle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +95,8 @@
 				7C706BF117425B3E00C4879D /* ViewController.h */,
 				7C706BF217425B3E00C4879D /* ViewController.m */,
 				7C706BDA17425B3E00C4879D /* Supporting Files */,
+				7CD96A251743C10E002C3F97 /* Puzzle.h */,
+				7CD96A261743C10E002C3F97 /* Puzzle.m */,
 			);
 			path = puzzle;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 				7C706BE017425B3E00C4879D /* main.m in Sources */,
 				7C706BE417425B3E00C4879D /* AppDelegate.m in Sources */,
 				7C706BF317425B3E00C4879D /* ViewController.m in Sources */,
+				7CD96A271743C10E002C3F97 /* Puzzle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +318,7 @@
 				7C706BF817425B3E00C4879D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

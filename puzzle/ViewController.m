@@ -14,10 +14,19 @@
 
 @implementation ViewController
 
+const int   rowTiles = 3,
+            colTiles = 3,
+            tileSize = 75;
+
+UIImage*    Tiles[rowTiles][colTiles];
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.image = [UIImage imageNamed:@"forest.jpg"];
+    [self splitInTiles:self.image];
 }
 
 - (void)didReceiveMemoryWarning
@@ -27,5 +36,21 @@
 }
 
 - (IBAction)pickBtn:(id)sender {
+    
 }
+
+-(void) splitInTiles:(UIImage*) img{
+    CGImageRef CGTile;
+    CGFloat x, y;
+    for (int row = 0; row < rowTiles; ++row) {
+        y = row * tileSize;
+        for (int col = 0; col < colTiles; ++col) {
+            x = col * tileSize;
+            CGTile = CGImageCreateWithImageInRect(img.CGImage, CGRectMake(x, y, tileSize, tileSize));
+            Tiles[row][col] = [UIImage imageWithCGImage:CGTile];
+            
+        }
+    }
+}
+
 @end
