@@ -18,15 +18,21 @@ const int   rowTiles = 3,
             colTiles = 3,
             tileSize = 75;
 
-UIImage*    Tiles[rowTiles][colTiles];
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.image = [UIImage imageNamed:@"forest.jpg"];
-    [self splitInTiles:self.image];
+    self.image = [UIImage imageNamed:@"forest.png"];
+    NSMutableArray* tiles = [self splitInTiles:self.image];
+    for (UIButton *btn in self.imageView.subviews) {
+        int i = 0;
+        printf("Gotcha!\n");
+        [btn setBackgroundImage:[tiles objectAtIndex:i] forState:UIControlStateNormal];
+        btn.frame = CGRectMake(5, 5, 75, 75);
+        //btn.frame = CGRectMake(i / colTiles * tileSize, i % colTiles * tileSize, tileSize, tileSize);
+        ++i;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,7 +45,7 @@ UIImage*    Tiles[rowTiles][colTiles];
     
 }
 
--(void) splitInTiles:(UIImage*) img{
+-(NSMutableArray*) splitInTiles:(UIImage*) img{
     CGImageRef CGTile;
     CGFloat x, y;
     NSMutableArray* bloodyTiles;
@@ -52,6 +58,7 @@ UIImage*    Tiles[rowTiles][colTiles];
             bloodyTiles[row * colTiles + col] = [UIImage imageWithCGImage:CGTile];
         }
     }
+    return bloodyTiles;
 }
 
 - (IBAction)tileSelected:(id)sender {

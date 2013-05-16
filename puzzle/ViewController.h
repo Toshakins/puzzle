@@ -12,7 +12,7 @@
 @interface ViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *imageView;
 - (IBAction)pickBtn:(id)sender;
--(void) splitInTiles:(UIImage*) img;
+-(NSMutableArray*) splitInTiles:(UIImage*) img;
 @property (weak, nonatomic) IBOutlet UILabel *topLabel;
 - (IBAction)tileSelected:(id)sender;
 @property (weak, nonatomic) UIImage *image;
