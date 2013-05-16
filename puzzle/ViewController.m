@@ -54,4 +54,6 @@ UIImage*    Tiles[rowTiles][colTiles];
     }
 }
 
+- (IBAction)tileSelected:(id)sender {
+}
 @end

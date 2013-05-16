@@ -14,6 +14,6 @@
 - (IBAction)pickBtn:(id)sender;
 -(void) splitInTiles:(UIImage*) img;
 @property (weak, nonatomic) IBOutlet UILabel *topLabel;
-@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *tiles;
+- (IBAction)tileSelected:(id)sender;
 @property (weak, nonatomic) UIImage *image;
 @end
