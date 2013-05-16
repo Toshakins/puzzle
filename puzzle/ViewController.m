@@ -29,8 +29,8 @@ const int   rowTiles = 3,
         int i = 0;
         printf("Gotcha!\n");
         [btn setBackgroundImage:[tiles objectAtIndex:i] forState:UIControlStateNormal];
-        btn.frame = CGRectMake(5, 5, 75, 75);
-        //btn.frame = CGRectMake(i / colTiles * tileSize, i % colTiles * tileSize, tileSize, tileSize);
+        //btn.frame = CGRectMake(5, 5, 75, 75);
+        btn.frame = CGRectMake(i / colTiles * tileSize, i % colTiles * tileSize, tileSize, tileSize);
         ++i;
     }
 }
@@ -49,13 +49,13 @@ const int   rowTiles = 3,
     CGImageRef CGTile;
     CGFloat x, y;
     NSMutableArray* bloodyTiles;
-    bloodyTiles = [bloodyTiles initWithCapacity:(colTiles * rowTiles)];
+    bloodyTiles = [NSMutableArray array];//[bloodyTiles initWithCapacity:(colTiles * rowTiles)];
     for (int row = 0; row < rowTiles; ++row) {
         y = row * tileSize;
         for (int col = 0; col < colTiles; ++col) {
             x = col * tileSize;
             CGTile = CGImageCreateWithImageInRect(img.CGImage, CGRectMake(x, y, tileSize, tileSize));
-            bloodyTiles[row * colTiles + col] = [UIImage imageWithCGImage:CGTile];
+            [bloodyTiles addObject: [UIImage imageWithCGImage:CGTile]];
         }
     }
     return bloodyTiles;
