@@ -11,6 +11,4 @@
 
 @interface Puzzle : NSObject
 
--(int*) swapTiles;
--(void) splitInTiles:(UIImage*)img:(int)n;
 @end

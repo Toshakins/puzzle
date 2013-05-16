@@ -42,13 +42,14 @@ UIImage*    Tiles[rowTiles][colTiles];
 -(void) splitInTiles:(UIImage*) img{
     CGImageRef CGTile;
     CGFloat x, y;
+    NSMutableArray* bloodyTiles;
+    bloodyTiles = [bloodyTiles initWithCapacity:(colTiles * rowTiles)];
     for (int row = 0; row < rowTiles; ++row) {
         y = row * tileSize;
         for (int col = 0; col < colTiles; ++col) {
             x = col * tileSize;
             CGTile = CGImageCreateWithImageInRect(img.CGImage, CGRectMake(x, y, tileSize, tileSize));
-            Tiles[row][col] = [UIImage imageWithCGImage:CGTile];
-            
+            bloodyTiles[row * colTiles + col] = [UIImage imageWithCGImage:CGTile];
         }
     }
 }

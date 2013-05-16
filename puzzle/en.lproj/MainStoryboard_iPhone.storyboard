@@ -7,7 +7,6 @@
         <!--View Controller-->
         <scene sceneID="5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
@@ -125,12 +124,36 @@
                     <connections>
                         <outlet property="imageView" destination="osR-Z0-dhT" id="a2i-an-8lt"/>
                         <outlet property="topLabel" destination="bV5-mD-USf" id="HKa-gw-oPu"/>
+                        <outletCollection property="tiles" destination="z7P-se-aOI" id="Shf-uc-SgC"/>
+                        <outletCollection property="tiles" destination="ddt-bP-2eb" id="fkC-KT-EFt"/>
+                        <outletCollection property="tiles" destination="cEM-i4-Qlk" id="b1y-EM-djA"/>
+                        <outletCollection property="tiles" destination="8RU-Wm-AwZ" id="VvJ-wD-feb"/>
+                        <outletCollection property="tiles" destination="lc0-xn-F8U" id="7tU-78-qKI"/>
+                        <outletCollection property="tiles" destination="8lb-N6-9yW" id="Iok-kz-fDs"/>
+                        <outletCollection property="tiles" destination="1br-QR-2mA" id="mMq-xW-K73"/>
+                        <outletCollection property="tiles" destination="edI-aW-VKv" id="3s8-Fb-uSL"/>
+                        <outletCollection property="tiles" destination="Khe-Ek-T5b" id="UbI-iu-WSI"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="337" y="232"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="pickBtn:"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="topLabel" candidateClass="UILabel"/>
+                <relationship kind="outletCollection" name="tiles" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
