@@ -18,6 +18,8 @@ const int   rowTiles = 3,
             colTiles = 3,
             tileSize = 75;
 
+ActiveButtons activeButtons;
+
 
 - (void)viewDidLoad
 {
@@ -47,8 +49,7 @@ const int   rowTiles = 3,
     CGImageRef CGTile;
     CGFloat x, y;
     NSMutableArray* bloodyTiles;
-    bloodyTiles = [NSMutableArray array];//[bloodyTiles initWithCapacity:(colTiles * rowTiles)];
-    for (int row = 0; row < rowTiles; ++row) {
+    bloodyTiles = [NSMutableArray array];    for (int row = 0; row < rowTiles; ++row) {
         y = row * tileSize;
         for (int col = 0; col < colTiles; ++col) {
             x = col * tileSize;

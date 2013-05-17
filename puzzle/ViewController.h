@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "Puzzle.h"
+#import "activeButtons.h"
 
 @interface ViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIView *imageView;
 - (IBAction)pickBtn:(id)sender;
 -(NSMutableArray*) splitInTiles:(UIImage*) img;
-@property (weak, nonatomic) IBOutlet UILabel *topLabel;
 - (IBAction)tileSelected:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UILabel *topLabel;
 @property (weak, nonatomic) UIImage *image;
+@property (weak, nonatomic) IBOutlet UIView *imageView;
+
 @end
