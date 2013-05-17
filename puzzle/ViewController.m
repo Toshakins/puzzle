@@ -25,11 +25,9 @@ const int   rowTiles = 3,
 	// Do any additional setup after loading the view, typically from a nib.
     self.image = [UIImage imageNamed:@"forest.png"];
     NSMutableArray* tiles = [self splitInTiles:self.image];
+    int i = 0;
     for (UIButton *btn in self.imageView.subviews) {
-        int i = 0;
-        printf("Gotcha!\n");
         [btn setBackgroundImage:[tiles objectAtIndex:i] forState:UIControlStateNormal];
-        //btn.frame = CGRectMake(5, 5, 75, 75);
         btn.frame = CGRectMake(i / colTiles * tileSize, i % colTiles * tileSize, tileSize, tileSize);
         ++i;
     }
