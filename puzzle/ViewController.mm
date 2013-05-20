@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#include <stdlib.h>
+#import <stdlib.h>
 
 @interface ViewController ()
 
@@ -23,21 +23,26 @@ ActiveButtons activeButtons;
 
 - (void) permutateImages {
     NSMutableArray* tiles =[[NSMutableArray alloc] init];
+    NSMutableDictionary* imageTag;
     for (UIButton *btn in self.imageView.subviews) {
-        [tiles addObject: btn.currentBackgroundImage];
+        [imageTag setObject:btn.currentBackgroundImage forKey:[NSNumber numberWithInt: btn.tag]];
+        [tiles addObject: imageTag];
 
     }
     int position;
     UIImage* t;
-    for (UIButton* btn in self.imageView.subviews) {
-        position = arc4random() % tiles.count;
-        if (tiles.count > 0) {
-            t = tiles[position];
-            [btn setBackgroundImage:t forState:UIControlStateNormal];
-            btn.tag = position;
-            [tiles removeObjectAtIndex:position];
-        }
-    }
+//    for (UIButton* btn in self.imageView.subviews) {
+//        position = arc4random() % tiles.count;
+//        if (tiles.count > 0) {
+//            t = tiles[position];
+//            [btn setBackgroundImage:t forState:UIControlStateNormal];
+//            btn.tag = position;
+//            [tiles removeObjectAtIndex:position];
+//        }
+//    }
+    //for (UIButton* btn in self.imageView.subviews) {
+    //    printf("TAG %d\n", btn.tag);
+    //}
 }
 
 - (void)viewDidLoad
@@ -83,5 +88,8 @@ ActiveButtons activeButtons;
 }
 
 - (IBAction)tileSelected:(id)sender {
+    UIButton* btn = sender;
+    //activeButtons.push(<#UIButton *data#>)
+    printf("TAG: %d\n", btn.tag);
 }
 @end

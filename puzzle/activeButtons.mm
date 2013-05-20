@@ -26,3 +26,9 @@ UIButton* ActiveButtons::front() {
 UIButton* ActiveButtons::back() {
     return active.back();
 }
+
+void ActiveButtons::clear() {
+    while (!active.empty()) {
+        active.pop();
+    }
+}

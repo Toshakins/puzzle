@@ -23,6 +23,7 @@ public:
     void push(UIButton* data);
     UIButton* front();
     UIButton* back();
+    void clear();
 };
 
 #endif /* defined(__puzzle__activeButtons__) */
