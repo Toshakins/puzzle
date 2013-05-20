@@ -11,9 +11,10 @@
 #import "activeButtons.h"
 
 @interface ViewController : UIViewController
-- (IBAction)pickBtn:(id)sender;
--(NSMutableArray*) splitInTiles:(UIImage*) img;
-- (IBAction)tileSelected:(id)sender;
+- (IBAction) pickBtn:(id)sender;
+- (NSMutableArray*) splitInTiles:(UIImage*) img;
+- (IBAction) tileSelected:(id)sender;
+- (void) permutateImages;
 
 @property (weak, nonatomic) IBOutlet UILabel *topLabel;
 @property (weak, nonatomic) UIImage *image;
