@@ -38,7 +38,6 @@ ActiveButtons activeButtons;
             [tiles removeObjectAtIndex:position];
         }
     }
-//    [a setBackgroundImage: b.currentBackgroundImage forState:UIControlStateNormal];
 }
 
 - (void)viewDidLoad
