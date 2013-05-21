@@ -88,6 +88,5 @@ ActiveButtons activeButtons;
 - (IBAction)tileSelected:(id)sender {
     UIButton* btn = sender;
     //activeButtons.push(<#UIButton *data#>)
-    printf("TAG: %d\n", btn.tag);
 }
 @end
