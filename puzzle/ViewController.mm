@@ -23,26 +23,24 @@ ActiveButtons activeButtons;
 
 - (void) permutateImages {
     NSMutableArray* tiles =[[NSMutableArray alloc] init];
-    NSMutableDictionary* imageTag;
+    NSMutableArray* indexes = [[NSMutableArray alloc] init];
     for (UIButton *btn in self.imageView.subviews) {
-        [imageTag setObject:btn.currentBackgroundImage forKey:[NSNumber numberWithInt: btn.tag]];
-        [tiles addObject: imageTag];
+        [tiles addObject: btn.currentBackgroundImage];
+        [indexes addObject: [NSNumber numberWithInt:btn.tag]];
 
     }
     int position;
     UIImage* t;
-//    for (UIButton* btn in self.imageView.subviews) {
-//        position = arc4random() % tiles.count;
-//        if (tiles.count > 0) {
-//            t = tiles[position];
-//            [btn setBackgroundImage:t forState:UIControlStateNormal];
-//            btn.tag = position;
-//            [tiles removeObjectAtIndex:position];
-//        }
-//    }
-    //for (UIButton* btn in self.imageView.subviews) {
-    //    printf("TAG %d\n", btn.tag);
-    //}
+    for (UIButton* btn in self.imageView.subviews) {
+        position = arc4random() % tiles.count;
+        if (tiles.count > 0) {
+            t = tiles[position];
+            [btn setBackgroundImage:t forState:UIControlStateNormal];
+            btn.tag = [indexes[position] integerValue];
+            [tiles removeObjectAtIndex:position];
+            [indexes removeObjectAtIndex:position];
+        }
+    }
 }
 
 - (void)viewDidLoad
