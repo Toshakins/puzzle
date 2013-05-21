@@ -25,7 +25,7 @@ public:
     ImageTag front();
     ImageTag back();
     void clear();
-    int count();
+    bool full();
 };
 
 #endif /* defined(__puzzle__activeButtons__) */

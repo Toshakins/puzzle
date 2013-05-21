@@ -34,6 +34,6 @@ void ActiveButtons::clear() {
     }
 }
 
-int ActiveButtons::count() {
-    return active.size();
+bool ActiveButtons::full() {
+    return (active.size() == 2) ? true : false;
 }

@@ -17,6 +17,7 @@
 - (IBAction) tileSelected:(id)sender;
 - (void) permutateImages;
 - (void) swapButtons:(ImageTag) a withBitton:(ImageTag) b;
+- (bool) isSolved;
 
 @property (weak, nonatomic) IBOutlet UILabel *topLabel;
 @property (weak, nonatomic) UIImage *image;

@@ -90,10 +90,6 @@ ActiveButtons activeButtons;
 - (void) swapButtons: (ImageTag) a withBitton:(ImageTag) b {
     UIButton* first = (UIButton*)[self.imageView viewWithTag: a.tag];
     UIButton* second = (UIButton*) [self.imageView viewWithTag: b.tag];
-    if (a.tag == 0 || b.tag == 0) {
-        printf("NOW WILL BE ERROR\n");
-        NSLog(@"img data: %@\n", (a.tag == 0) ? a.img : b.img);
-    }
     [second setBackgroundImage:a.img forState:UIControlStateNormal];
     second.tag = a.tag;
     [first setBackgroundImage:b.img forState:UIControlStateNormal];
@@ -107,10 +103,29 @@ ActiveButtons activeButtons;
     ImageTag tmp = {btn.currentBackgroundImage, btn.tag};
     activeButtons.push(tmp);
     printf("This tags in activeButtons: %d %d\n", activeButtons.front().tag, activeButtons.back().tag);
-    if (activeButtons.count() == 2) {
+    if (activeButtons.full()) {
         printf("Call swapButtons...\n");
         [self swapButtons: activeButtons.front() withBitton:activeButtons.back()];
         activeButtons.clear();
     }
+    if ([self isSolved]) {
+        printf("Solved!\n");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congatulations!"
+                                                        message:@"You sucessfully solve puzzle."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (bool) isSolved {
+    printf("Let's solve\n");
+    for (int i = 1; i < self.imageView.subviews.count; ++i) {
+        if ( ((UIButton*) self.imageView.subviews[i]).tag - ((UIButton*) self.imageView.subviews[i - 1]).tag != 1) {
+            return false;
+        }
+    }
+    return true;
 }
 @end
