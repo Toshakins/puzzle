@@ -6,24 +6,25 @@
 //  Copyright (c) 2013 Smartbit user. All rights reserved.
 //
 
-#include "ActiveButtons.h"
+#import "ActiveButtons.h"
 
 void ActiveButtons::pop() {
     active.pop();
 }
 
-void ActiveButtons::push(UIButton *data) {
+void ActiveButtons::push(ImageTag data) {
+    //dumb clause, but what I can do?
     if (active.size() == 2) {
         active.pop();
     }
     active.push(data);
 }
 
-UIButton* ActiveButtons::front() {
+ImageTag ActiveButtons::front() {
     return active.front();
 }
 
-UIButton* ActiveButtons::back() {
+ImageTag ActiveButtons::back() {
     return active.back();
 }
 
@@ -31,4 +32,8 @@ void ActiveButtons::clear() {
     while (!active.empty()) {
         active.pop();
     }
+}
+
+int ActiveButtons::count() {
+    return active.size();
 }

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <stdlib.h>
+#import <vector>
 
 @interface ViewController ()
 
@@ -23,6 +24,7 @@ ActiveButtons activeButtons;
 
 - (void) permutateImages {
     NSMutableArray* tiles =[[NSMutableArray alloc] init];
+    //hello, I can't dictionaries
     NSMutableArray* indexes = [[NSMutableArray alloc] init];
     for (UIButton *btn in self.imageView.subviews) {
         [tiles addObject: btn.currentBackgroundImage];
@@ -51,7 +53,7 @@ ActiveButtons activeButtons;
     NSMutableArray* tiles = [self splitInTiles:self.image];
     int i = 0;
     for (UIButton *btn in self.imageView.subviews) {
-        btn.tag = i;
+        btn.tag = i + 1;
         [btn setBackgroundImage:[tiles objectAtIndex:i] forState:UIControlStateNormal];
         btn.frame = CGRectMake(i / colTiles * tileSize, i % colTiles * tileSize, tileSize, tileSize);
         ++i;
@@ -85,8 +87,30 @@ ActiveButtons activeButtons;
     return bloodyTiles;
 }
 
+- (void) swapButtons: (ImageTag) a withBitton:(ImageTag) b {
+    UIButton* first = (UIButton*)[self.imageView viewWithTag: a.tag];
+    UIButton* second = (UIButton*) [self.imageView viewWithTag: b.tag];
+    if (a.tag == 0 || b.tag == 0) {
+        printf("NOW WILL BE ERROR\n");
+        NSLog(@"img data: %@\n", (a.tag == 0) ? a.img : b.img);
+    }
+    [second setBackgroundImage:a.img forState:UIControlStateNormal];
+    second.tag = a.tag;
+    [first setBackgroundImage:b.img forState:UIControlStateNormal];
+    first.tag = b.tag;
+}
+
 - (IBAction)tileSelected:(id)sender {
     UIButton* btn = sender;
-    //activeButtons.push(<#UIButton *data#>)
+    printf("Tile Event called\n");
+    printf("on tile with tag: %d\n", btn.tag);
+    ImageTag tmp = {btn.currentBackgroundImage, btn.tag};
+    activeButtons.push(tmp);
+    printf("This tags in activeButtons: %d %d\n", activeButtons.front().tag, activeButtons.back().tag);
+    if (activeButtons.count() == 2) {
+        printf("Call swapButtons...\n");
+        [self swapButtons: activeButtons.front() withBitton:activeButtons.back()];
+        activeButtons.clear();
+    }
 }
 @end

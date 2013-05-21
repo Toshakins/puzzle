@@ -13,17 +13,19 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <queue>
+#import "dataTypes.h"
 
 using namespace std;
 
 class ActiveButtons {
-    std::queue<UIButton*> active;
+    std::queue<ImageTag> active;
 public:
     void pop();
-    void push(UIButton* data);
-    UIButton* front();
-    UIButton* back();
+    void push(ImageTag data);
+    ImageTag front();
+    ImageTag back();
     void clear();
+    int count();
 };
 
 #endif /* defined(__puzzle__activeButtons__) */

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Puzzle.h"
+#import "dataTypes.h"
 #import "activeButtons.h"
 
 @interface ViewController : UIViewController
@@ -15,6 +16,7 @@
 - (NSMutableArray*) splitInTiles:(UIImage*) img;
 - (IBAction) tileSelected:(id)sender;
 - (void) permutateImages;
+- (void) swapButtons:(ImageTag) a withBitton:(ImageTag) b;
 
 @property (weak, nonatomic) IBOutlet UILabel *topLabel;
 @property (weak, nonatomic) UIImage *image;
