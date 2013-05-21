@@ -16,9 +16,9 @@
 
 @implementation ViewController
 
-const int   rowTiles = 3,
-            colTiles = 3,
-            tileSize = 75;
+const int   rowTiles = 4,
+            colTiles = 4,
+            tileSize = 50;
 
 ActiveButtons activeButtons;
 
