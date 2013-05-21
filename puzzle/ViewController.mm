@@ -69,7 +69,7 @@ ActiveButtons activeButtons;
 }
 
 - (IBAction)pickBtn:(id)sender {
-    
+    [self permutateImages];
 }
 
 -(NSMutableArray*) splitInTiles:(UIImage*) img{
@@ -98,18 +98,13 @@ ActiveButtons activeButtons;
 
 - (IBAction)tileSelected:(id)sender {
     UIButton* btn = sender;
-    printf("Tile Event called\n");
-    printf("on tile with tag: %d\n", btn.tag);
     ImageTag tmp = {btn.currentBackgroundImage, btn.tag};
     activeButtons.push(tmp);
-    printf("This tags in activeButtons: %d %d\n", activeButtons.front().tag, activeButtons.back().tag);
     if (activeButtons.full()) {
-        printf("Call swapButtons...\n");
         [self swapButtons: activeButtons.front() withBitton:activeButtons.back()];
         activeButtons.clear();
     }
     if ([self isSolved]) {
-        printf("Solved!\n");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congatulations!"
                                                         message:@"You sucessfully solve puzzle."
                                                        delegate:nil
@@ -120,7 +115,6 @@ ActiveButtons activeButtons;
 }
 
 - (bool) isSolved {
-    printf("Let's solve\n");
     for (int i = 1; i < self.imageView.subviews.count; ++i) {
         if ( ((UIButton*) self.imageView.subviews[i]).tag - ((UIButton*) self.imageView.subviews[i - 1]).tag != 1) {
             return false;
