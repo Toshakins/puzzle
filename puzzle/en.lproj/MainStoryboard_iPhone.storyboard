@@ -337,10 +337,10 @@
                         <color key="backgroundColor" red="0.0" green="0.40392160415649414" blue="0.36078432202339172" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="osR-Z0-dhT" firstAttribute="centerX" secondItem="a9q-PJ-1Jt" secondAttribute="centerX" type="default" id="AqQ-do-iE8"/>
+                            <constraint firstItem="bV5-mD-USf" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="B6s-tW-xmJ"/>
                             <constraint firstItem="osR-Z0-dhT" firstAttribute="centerY" secondItem="3" secondAttribute="centerY" type="default" id="Ch3-zp-hqt"/>
+                            <constraint firstItem="bV5-mD-USf" firstAttribute="top" secondItem="3" secondAttribute="top" constant="6" id="OsR-we-gQX"/>
                             <constraint firstAttribute="bottom" secondItem="a9q-PJ-1Jt" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="UMz-E8-Thb"/>
-                            <constraint firstItem="bV5-mD-USf" firstAttribute="top" secondItem="3" secondAttribute="top" constant="107" id="YXR-b2-ohe"/>
-                            <constraint firstItem="osR-Z0-dhT" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="cCY-qi-AHS"/>
                             <constraint firstItem="bV5-mD-USf" firstAttribute="centerX" secondItem="osR-Z0-dhT" secondAttribute="centerX" type="default" id="uy0-2o-d3K"/>
                         </constraints>
                     </view>
