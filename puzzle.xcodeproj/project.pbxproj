@@ -21,6 +21,7 @@
 		7C706BF017425B3E00C4879D /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C706BEE17425B3E00C4879D /* MainStoryboard_iPad.storyboard */; };
 		7C706BF317425B3E00C4879D /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C706BF217425B3E00C4879D /* ViewController.mm */; };
 		7C79EDDC174526B000895972 /* forest.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C79EDDB174526B000895972 /* forest.png */; };
+		7CDEC41A174CE9B000B64B9A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDEC419174CE9B000B64B9A /* QuartzCore.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		7C706BF117425B3E00C4879D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		7C706BF217425B3E00C4879D /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		7C79EDDB174526B000895972 /* forest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forest.png; sourceTree = "<group>"; };
+		7CDEC419174CE9B000B64B9A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CED35329174B87A300D49DC4 /* dataTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dataTypes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CDEC41A174CE9B000B64B9A /* QuartzCore.framework in Frameworks */,
 				7C706BD417425B3E00C4879D /* UIKit.framework in Frameworks */,
 				7C706BD617425B3E00C4879D /* Foundation.framework in Frameworks */,
 				7C706BD817425B3E00C4879D /* CoreGraphics.framework in Frameworks */,
@@ -76,6 +79,7 @@
 		7C706BC717425B3E00C4879D = {
 			isa = PBXGroup;
 			children = (
+				7CDEC419174CE9B000B64B9A /* QuartzCore.framework */,
 				7C706BD917425B3E00C4879D /* puzzle */,
 				7C706BD217425B3E00C4879D /* Frameworks */,
 				7C706BD117425B3E00C4879D /* Products */,
