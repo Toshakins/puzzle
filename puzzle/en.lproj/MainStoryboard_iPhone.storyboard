@@ -9,7 +9,7 @@
             <objects>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Puzzle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bV5-mD-USf">
@@ -312,10 +312,8 @@
                                     <constraint firstItem="1LL-rL-Chw" firstAttribute="top" secondItem="mhx-gn-5er" secondAttribute="top" type="default" id="dGz-gF-BrT"/>
                                     <constraint firstItem="Koh-Nd-TAJ" firstAttribute="trailing" secondItem="LcH-YS-p69" secondAttribute="trailing" type="default" id="dXL-po-LYb"/>
                                     <constraint firstItem="uU4-mM-8Tp" firstAttribute="top" secondItem="LcH-YS-p69" secondAttribute="top" type="default" id="fSg-ce-14W"/>
-                                    <constraint firstItem="mhx-gn-5er" firstAttribute="top" secondItem="osR-Z0-dhT" secondAttribute="top" constant="117" scoringType="5" id="g3q-Vs-z3Y"/>
                                     <constraint firstItem="LcH-YS-p69" firstAttribute="bottom" secondItem="uU4-mM-8Tp" secondAttribute="bottom" type="default" id="h9i-T4-W8u"/>
                                     <constraint firstItem="LcH-YS-p69" firstAttribute="leading" secondItem="V8g-wS-xrJ" secondAttribute="leading" type="default" id="hAP-Ah-qBe"/>
-                                    <constraint firstItem="3eh-54-HKv" firstAttribute="leading" secondItem="osR-Z0-dhT" secondAttribute="leading" constant="118" scoringType="5" id="hMa-RW-GnP"/>
                                     <constraint firstItem="Noz-ga-Zox" firstAttribute="top" secondItem="osR-Z0-dhT" secondAttribute="top" constant="65" id="hN0-GW-bZt"/>
                                     <constraint firstItem="5Fw-uv-NfY" firstAttribute="top" secondItem="3eh-54-HKv" secondAttribute="top" type="default" id="hVV-SD-bG6"/>
                                     <constraint firstItem="1LL-rL-Chw" firstAttribute="leading" secondItem="yEH-H2-3yc" secondAttribute="leading" type="default" id="i2I-HF-aVs"/>
@@ -333,19 +331,33 @@
                                     <constraint firstItem="3eh-54-HKv" firstAttribute="trailing" secondItem="2Pp-9I-Svn" secondAttribute="trailing" type="default" id="yCR-kF-fBa"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIR-js-hmp">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="U2d-CX-isB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" red="0.50196081399917603" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.40392160415649414" blue="0.36078432202339172" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
+                            <constraint firstItem="gIR-js-hmp" firstAttribute="centerX" secondItem="osR-Z0-dhT" secondAttribute="centerX" type="default" id="8Vn-zQ-1Fe"/>
                             <constraint firstItem="osR-Z0-dhT" firstAttribute="centerX" secondItem="a9q-PJ-1Jt" secondAttribute="centerX" type="default" id="AqQ-do-iE8"/>
-                            <constraint firstItem="bV5-mD-USf" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="B6s-tW-xmJ"/>
                             <constraint firstItem="osR-Z0-dhT" firstAttribute="centerY" secondItem="3" secondAttribute="centerY" type="default" id="Ch3-zp-hqt"/>
+                            <constraint firstItem="gIR-js-hmp" firstAttribute="top" secondItem="bV5-mD-USf" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="HNc-34-mpV"/>
                             <constraint firstItem="bV5-mD-USf" firstAttribute="top" secondItem="3" secondAttribute="top" constant="6" id="OsR-we-gQX"/>
+                            <constraint firstItem="osR-Z0-dhT" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="45" id="RrJ-EA-MAL"/>
+                            <constraint firstItem="osR-Z0-dhT" firstAttribute="top" secondItem="3" secondAttribute="top" constant="115" id="TWR-DO-EzL"/>
                             <constraint firstAttribute="bottom" secondItem="a9q-PJ-1Jt" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="UMz-E8-Thb"/>
-                            <constraint firstItem="bV5-mD-USf" firstAttribute="centerX" secondItem="osR-Z0-dhT" secondAttribute="centerX" type="default" id="uy0-2o-d3K"/>
+                            <constraint firstItem="gIR-js-hmp" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="X1S-gV-LNm"/>
+                            <constraint firstItem="gIR-js-hmp" firstAttribute="trailing" secondItem="bV5-mD-USf" secondAttribute="trailing" type="default" id="eZf-Qb-dyy"/>
+                            <constraint firstItem="gIR-js-hmp" firstAttribute="leading" secondItem="bV5-mD-USf" secondAttribute="leading" type="default" id="zR5-u0-rFZ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="osR-Z0-dhT" id="a2i-an-8lt"/>
+                        <outlet property="timer" destination="gIR-js-hmp" id="Yqq-J3-35j"/>
                         <outlet property="topLabel" destination="bV5-mD-USf" id="HKa-gw-oPu"/>
                     </connections>
                 </viewController>
@@ -364,6 +376,7 @@
                 <relationship kind="action" name="pickBtn:"/>
                 <relationship kind="action" name="tileSelected:"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="timer" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="topLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -371,6 +384,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>

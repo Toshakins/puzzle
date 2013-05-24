@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import <stdlib.h>
 #import <vector>
+#import <AudioToolbox/AudioServices.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface ViewController ()
 
@@ -19,6 +21,9 @@
 const int   rowTiles = 4,
             colTiles = 4,
             tileSize = 50;
+NSDate* startTime;
+float countdownSeconds = 30;
+NSString* timerFormat = @"0:%.0f";
 
 ActiveButtons activeButtons;
 
@@ -29,7 +34,6 @@ ActiveButtons activeButtons;
     for (UIButton *btn in self.imageView.subviews) {
         [tiles addObject: btn.currentBackgroundImage];
         [indexes addObject: [NSNumber numberWithInt:btn.tag]];
-
     }
     int position;
     UIImage* t;
@@ -58,8 +62,6 @@ ActiveButtons activeButtons;
         btn.frame = CGRectMake(i / colTiles * tileSize, i % colTiles * tileSize, tileSize, tileSize);
         ++i;
     }
-    [self permutateImages];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,6 +72,10 @@ ActiveButtons activeButtons;
 
 - (IBAction)pickBtn:(id)sender {
     [self permutateImages];
+    startTime = [NSDate date];
+    self.timer.text = [NSString stringWithFormat:timerFormat, countdownSeconds];
+    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self
+             selector:@selector (countdownUpdateMethod:) userInfo:nil repeats:YES];
 }
 
 -(NSMutableArray*) splitInTiles:(UIImage*) img{
@@ -90,6 +96,14 @@ ActiveButtons activeButtons;
 - (void) swapButtons: (ImageTag) a withBitton:(ImageTag) b {
     UIButton* first = (UIButton*)[self.imageView viewWithTag: a.tag];
     UIButton* second = (UIButton*) [self.imageView viewWithTag: b.tag];
+    
+    //stunts
+    //CALayer *btn1 = [CALayer layer];
+//    [self.view.layer addSublayer:btn1];
+//    CATransform3D t = CATransform3DIdentity;
+//    t = CATransform3DRotate(t, 90.0f * M_PI / 180.0f, 0, 1, 0);
+//    first.transform = CGAffineTransformMakeRotation(90.0f * M_PI / 180.0f);
+    
     [second setBackgroundImage:a.img forState:UIControlStateNormal];
     second.tag = a.tag;
     [first setBackgroundImage:b.img forState:UIControlStateNormal];
@@ -121,5 +135,32 @@ ActiveButtons activeButtons;
         }
     }
     return true;
+}
+
+- (void)countdownUpdateMethod:(NSTimer*)theTimer {
+    NSDate *currentDate = [NSDate date];
+    NSTimeInterval elaspedTime = [currentDate timeIntervalSinceDate:startTime];
+    
+    NSTimeInterval difference = countdownSeconds - elaspedTime;
+    if (difference <= 0) {
+        [theTimer invalidate];
+        difference = 0;
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@":-("
+                                                        message:@"You didn't get in time. Try once more!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        //TODO: scoreboard
+
+    }
+    if (difference < 5) {
+        //TODO: call next two lines only once
+        timerFormat = @"%.1f";
+        self.timer.textColor = [UIColor colorWithRed:210/255.0f green:45/255.0f blue:60/255.0f alpha:1.0f];
+        //crap. It didn't work in simulator
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    }
+    self.timer.text = [NSString stringWithFormat:timerFormat, difference];
 }
 @end

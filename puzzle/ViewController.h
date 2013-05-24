@@ -18,9 +18,12 @@
 - (void) permutateImages;
 - (void) swapButtons:(ImageTag) a withBitton:(ImageTag) b;
 - (bool) isSolved;
+- (void) timerProcessor;
+- (void)countdownUpdateMethod:(NSTimer*)theTimer;
 
 @property (weak, nonatomic) IBOutlet UILabel *topLabel;
-@property (weak, nonatomic) UIImage *image;
 @property (weak, nonatomic) IBOutlet UIView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *timer;
+@property (weak, nonatomic) UIImage *image;
 
 @end
