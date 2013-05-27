@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7C5F0D39174661790027F6B2 /* activeButtons.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F0D37174661790027F6B2 /* activeButtons.mm */; };
+		7C6170C417538B1F0047829D /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C6170C317538B1F0047829D /* config.json */; };
 		7C706BD417425B3E00C4879D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C706BD317425B3E00C4879D /* UIKit.framework */; };
 		7C706BD617425B3E00C4879D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C706BD517425B3E00C4879D /* Foundation.framework */; };
 		7C706BD817425B3E00C4879D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C706BD717425B3E00C4879D /* CoreGraphics.framework */; };
@@ -28,6 +29,8 @@
 /* Begin PBXFileReference section */
 		7C5F0D37174661790027F6B2 /* activeButtons.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = activeButtons.mm; sourceTree = "<group>"; };
 		7C5F0D38174661790027F6B2 /* activeButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = activeButtons.h; sourceTree = "<group>"; };
+		7C6170C317538B1F0047829D /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
+		7C6170CD1753A9480047829D /* adaptiveDifficulty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = adaptiveDifficulty.h; sourceTree = "<group>"; };
 		7C706BD017425B3E00C4879D /* puzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = puzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C706BD317425B3E00C4879D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7C706BD517425B3E00C4879D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -74,9 +77,17 @@
 				7C706BF217425B3E00C4879D /* ViewController.mm */,
 				7C5F0D37174661790027F6B2 /* activeButtons.mm */,
 				7C5F0D38174661790027F6B2 /* activeButtons.h */,
-				CED35329174B87A300D49DC4 /* dataTypes.h */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		7C6170CC1753A8D70047829D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CED35329174B87A300D49DC4 /* dataTypes.h */,
+				7C6170CD1753A9480047829D /* adaptiveDifficulty.h */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		7C706BC717425B3E00C4879D = {
@@ -111,12 +122,14 @@
 		7C706BD917425B3E00C4879D /* puzzle */ = {
 			isa = PBXGroup;
 			children = (
+				7C6170CC1753A8D70047829D /* Helpers */,
 				7C5F0D3017465D5E0027F6B2 /* Controller */,
 				7C706BE217425B3E00C4879D /* AppDelegate.h */,
 				7C706BE317425B3E00C4879D /* AppDelegate.m */,
 				7C706BEB17425B3E00C4879D /* MainStoryboard_iPhone.storyboard */,
 				7C706BEE17425B3E00C4879D /* MainStoryboard_iPad.storyboard */,
 				7C706BDA17425B3E00C4879D /* Supporting Files */,
+				7C6170C317538B1F0047829D /* config.json */,
 			);
 			path = puzzle;
 			sourceTree = "<group>";
@@ -194,6 +207,7 @@
 				7C706BED17425B3E00C4879D /* MainStoryboard_iPhone.storyboard in Resources */,
 				7C706BF017425B3E00C4879D /* MainStoryboard_iPad.storyboard in Resources */,
 				7C79EDDC174526B000895972 /* forest.png in Resources */,
+				7C6170C417538B1F0047829D /* config.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
