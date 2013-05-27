@@ -11,15 +11,14 @@
 #import "dataTypes.h"
 #import "activeButtons.h"
 
-@interface ViewController : UIViewController
+//http://mobile.tutsplus.com/tutorials/iphone/uialertview/
+@interface ViewController : UIViewController <UIAlertViewDelegate>
 - (IBAction) pickBtn:(id)sender;
 - (NSMutableArray*) splitInTiles:(UIImage*) img;
 - (IBAction) tileSelected:(id)sender;
 - (void) permutateImages;
 - (void) swapButtons:(ImageTag) a withBitton:(ImageTag) b;
 - (bool) isSolved;
-- (void) timerProcessor;
-- (void)countdownUpdateMethod:(NSTimer*)theTimer;
 
 @property (weak, nonatomic) IBOutlet UILabel *topLabel;
 @property (weak, nonatomic) IBOutlet UIView *imageView;

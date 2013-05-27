@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "adaptiveDifficulty.h"
 #import <stdlib.h>
 #import <vector>
 #import <AudioToolbox/AudioServices.h>
@@ -24,6 +25,8 @@ const int   rowTiles = 4,
 NSDate* startTime;
 float countdownSeconds = 30;
 NSString* timerFormat = @"0:%.0f";
+NSString* config = @"config.json";
+NSDictionary* json;
 
 ActiveButtons activeButtons;
 
@@ -72,6 +75,13 @@ ActiveButtons activeButtons;
 
 - (IBAction)pickBtn:(id)sender {
     [self permutateImages];
+    timerFormat = @"0:%.0f";
+    self.timer.textColor = [UIColor greenColor];
+    NSError* error;
+    NSString* pathToConfig = [[NSBundle mainBundle] pathForResource: [config stringByDeletingPathExtension] ofType:[config pathExtension]];
+    //I enjoy side effects!
+    json = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile: pathToConfig] options:kNilOptions error:&error];
+    countdownSeconds = [[json objectForKey:@"time"] floatValue];
     startTime = [NSDate date];
     self.timer.text = [NSString stringWithFormat:timerFormat, countdownSeconds];
     [NSTimer scheduledTimerWithTimeInterval:0.1 target:self
@@ -126,6 +136,7 @@ ActiveButtons activeButtons;
                                               otherButtonTitles:nil];
         [alert show];
     }
+     //TODO: scoreboard
 }
 
 - (bool) isSolved {
@@ -139,9 +150,9 @@ ActiveButtons activeButtons;
 
 - (void)countdownUpdateMethod:(NSTimer*)theTimer {
     NSDate *currentDate = [NSDate date];
-    NSTimeInterval elaspedTime = [currentDate timeIntervalSinceDate:startTime];
+    NSTimeInterval elapsedTime = [currentDate timeIntervalSinceDate:startTime];
     
-    NSTimeInterval difference = countdownSeconds - elaspedTime;
+    NSTimeInterval difference = countdownSeconds - elapsedTime;
     if (difference <= 0) {
         [theTimer invalidate];
         difference = 0;
@@ -151,7 +162,7 @@ ActiveButtons activeButtons;
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-        //TODO: scoreboard
+        //TODO: restart on OK
 
     }
     if (difference < 5) {

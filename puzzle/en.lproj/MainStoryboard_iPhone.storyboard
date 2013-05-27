@@ -24,7 +24,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9q-PJ-1Jt">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="21e-MO-RLS"/>
-                                    <constraint firstAttribute="width" constant="69" id="Q12-Ih-5EH"/>
+                                    <constraint firstAttribute="width" constant="69" id="7WV-9Z-Kf8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal" title="Run">
@@ -333,7 +333,8 @@
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIR-js-hmp">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="U2d-CX-isB"/>
+                                    <constraint firstAttribute="height" constant="31" id="2Wp-8g-4Sa"/>
+                                    <constraint firstAttribute="width" constant="67" id="69C-fP-8Uu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" red="0.50196081399917603" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -342,7 +343,6 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.40392160415649414" blue="0.36078432202339172" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="gIR-js-hmp" firstAttribute="centerX" secondItem="osR-Z0-dhT" secondAttribute="centerX" type="default" id="8Vn-zQ-1Fe"/>
                             <constraint firstItem="osR-Z0-dhT" firstAttribute="centerX" secondItem="a9q-PJ-1Jt" secondAttribute="centerX" type="default" id="AqQ-do-iE8"/>
                             <constraint firstItem="osR-Z0-dhT" firstAttribute="centerY" secondItem="3" secondAttribute="centerY" type="default" id="Ch3-zp-hqt"/>
                             <constraint firstItem="gIR-js-hmp" firstAttribute="top" secondItem="bV5-mD-USf" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="HNc-34-mpV"/>
@@ -350,9 +350,9 @@
                             <constraint firstItem="osR-Z0-dhT" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="45" id="RrJ-EA-MAL"/>
                             <constraint firstItem="osR-Z0-dhT" firstAttribute="top" secondItem="3" secondAttribute="top" constant="115" id="TWR-DO-EzL"/>
                             <constraint firstAttribute="bottom" secondItem="a9q-PJ-1Jt" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="UMz-E8-Thb"/>
-                            <constraint firstItem="gIR-js-hmp" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="X1S-gV-LNm"/>
-                            <constraint firstItem="gIR-js-hmp" firstAttribute="trailing" secondItem="bV5-mD-USf" secondAttribute="trailing" type="default" id="eZf-Qb-dyy"/>
-                            <constraint firstItem="gIR-js-hmp" firstAttribute="leading" secondItem="bV5-mD-USf" secondAttribute="leading" type="default" id="zR5-u0-rFZ"/>
+                            <constraint firstItem="a9q-PJ-1Jt" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="eCk-pa-UZF"/>
+                            <constraint firstItem="gIR-js-hmp" firstAttribute="centerX" secondItem="osR-Z0-dhT" secondAttribute="centerX" type="default" id="g8S-BY-dtK"/>
+                            <constraint firstItem="gIR-js-hmp" firstAttribute="centerX" secondItem="bV5-mD-USf" secondAttribute="centerX" type="default" id="tuI-7p-8Lf"/>
                         </constraints>
                     </view>
                     <connections>
