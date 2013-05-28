@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "adaptiveDifficulty.h"
+#import "stuff.h"
 #import "animator.h"
 #import <stdlib.h>
 #import <vector>
@@ -113,6 +113,7 @@ ActiveButtons activeButtons;
 }
 
 - (IBAction)tileSelected:(id)sender {
+    //TODO: maybe highlight selected tiles is a good idea
     UIButton* btn = sender;
     ImageTag tmp = {btn.currentBackgroundImage, btn.tag};
     activeButtons.push(tmp);
