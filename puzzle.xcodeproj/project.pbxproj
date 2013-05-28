@@ -78,8 +78,6 @@
 			children = (
 				7C706BF117425B3E00C4879D /* ViewController.h */,
 				7C706BF217425B3E00C4879D /* ViewController.mm */,
-				7C5F0D37174661790027F6B2 /* activeButtons.mm */,
-				7C5F0D38174661790027F6B2 /* activeButtons.h */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -87,6 +85,8 @@
 		7C6170CC1753A8D70047829D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				7C5F0D37174661790027F6B2 /* activeButtons.mm */,
+				7C5F0D38174661790027F6B2 /* activeButtons.h */,
 				CED35329174B87A300D49DC4 /* dataTypes.h */,
 				7C6170CD1753A9480047829D /* adaptiveDifficulty.h */,
 				7C8D57A81754CF610083758D /* animator.h */,
