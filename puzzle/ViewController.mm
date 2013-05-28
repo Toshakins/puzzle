@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "adaptiveDifficulty.h"
+#import "animator.h"
 #import <stdlib.h>
 #import <vector>
 #import <AudioToolbox/AudioServices.h>
@@ -104,20 +105,11 @@ ActiveButtons activeButtons;
 }
 
 - (void) swapButtons: (ImageTag) a withBitton:(ImageTag) b {
-    UIButton* first = (UIButton*)[self.imageView viewWithTag: a.tag];
+    UIButton* first = (UIButton*) [self.imageView viewWithTag: a.tag];
     UIButton* second = (UIButton*) [self.imageView viewWithTag: b.tag];
     
     //stunts
-    //CALayer *btn1 = [CALayer layer];
-//    [self.view.layer addSublayer:btn1];
-//    CATransform3D t = CATransform3DIdentity;
-//    t = CATransform3DRotate(t, 90.0f * M_PI / 180.0f, 0, 1, 0);
-//    first.transform = CGAffineTransformMakeRotation(90.0f * M_PI / 180.0f);
-    
-    [second setBackgroundImage:a.img forState:UIControlStateNormal];
-    second.tag = a.tag;
-    [first setBackgroundImage:b.img forState:UIControlStateNormal];
-    first.tag = b.tag;
+    [animator tap:first also:second];
 }
 
 - (IBAction)tileSelected:(id)sender {
