@@ -19,7 +19,9 @@
 - (void) permutateImages;
 - (void) swapButtons:(ImageTag) a withBitton:(ImageTag) b;
 - (bool) isSolved;
+- (IBAction)addPic:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *addPic;
 @property (weak, nonatomic) IBOutlet UILabel *topLabel;
 @property (weak, nonatomic) IBOutlet UIView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *timer;

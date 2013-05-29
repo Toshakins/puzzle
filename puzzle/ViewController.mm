@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "stuff.h"
 #import "animator.h"
+#import "ViewController_pickerDelegate.h"
 #import <stdlib.h>
 #import <vector>
 #import <AudioToolbox/AudioServices.h>
@@ -30,6 +31,8 @@ NSString* config = @"config.json";
 NSDictionary* json;
 
 ActiveButtons activeButtons;
+
+@synthesize addPic, topLabel, image, imageView, timer;
 
 - (void) permutateImages {
     NSMutableArray* tiles =[[NSMutableArray alloc] init];
@@ -57,6 +60,7 @@ ActiveButtons activeButtons;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [addPic setBackgroundImage:[UIImage imageNamed:@"addPic.png"] forState:UIControlStateNormal];
     self.image = [UIImage imageNamed:@"forest.png"];
     NSMutableArray* tiles = [self splitInTiles:self.image];
     int i = 0;
@@ -139,6 +143,11 @@ ActiveButtons activeButtons;
         }
     }
     return true;
+}
+
+- (IBAction)addPic:(id)sender {
+    [self startMediaBrowserFromViewController: self
+                                usingDelegate: self];
 }
 
 - (void)countdownUpdateMethod:(NSTimer*)theTimer {
