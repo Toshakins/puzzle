@@ -67,7 +67,9 @@
         }
         if(pickedImage) {
             //TODO: remove hardcode, hooks for Retina
+            //http://developer.apple.com/library/ios/#documentation/AVFoundation/Reference/AVFoundation_Functions/Reference/reference.html
             self.image = [self resizeImage:pickedImage scaledToSize:CGSizeMake(225, 225)];
+            NSLog(@"%f %f", pickedImage.size.height, pickedImage.size.width);
             [self arrangeView];
         }
     }

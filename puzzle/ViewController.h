@@ -21,7 +21,7 @@
 - (bool) isSolved;
 - (IBAction)addPic:(id)sender;
 - (void) arrangeView;
-- (UIImage*)resizeImage:(UIImage*)image
+- (UIImage*)resizeImage:(UIImage*)img
               scaledToSize:(CGSize)newSize;
 
 @property (weak, nonatomic) IBOutlet UIButton *addPic;

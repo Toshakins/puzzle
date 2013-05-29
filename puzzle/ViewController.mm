@@ -35,11 +35,11 @@ ActiveButtons activeButtons;
 @synthesize addPic, topLabel, image, imageView, timer;
 
 
-- (UIImage*)resizeImage:(UIImage*)image
+- (UIImage*)resizeImage:(UIImage*)img
               scaledToSize:(CGSize)newSize;
 {
     UIGraphicsBeginImageContext( newSize );
-    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    [img drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
