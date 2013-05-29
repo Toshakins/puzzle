@@ -20,6 +20,9 @@
 - (void) swapButtons:(ImageTag) a withBitton:(ImageTag) b;
 - (bool) isSolved;
 - (IBAction)addPic:(id)sender;
+- (void) arrangeView;
+- (UIImage*)resizeImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize;
 
 @property (weak, nonatomic) IBOutlet UIButton *addPic;
 @property (weak, nonatomic) IBOutlet UILabel *topLabel;

@@ -34,6 +34,18 @@ ActiveButtons activeButtons;
 
 @synthesize addPic, topLabel, image, imageView, timer;
 
+
+- (UIImage*)resizeImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize;
+{
+    UIGraphicsBeginImageContext( newSize );
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 - (void) permutateImages {
     NSMutableArray* tiles =[[NSMutableArray alloc] init];
     //hello, I can't dictionaries
@@ -56,12 +68,8 @@ ActiveButtons activeButtons;
     }
 }
 
-- (void)viewDidLoad
+- (void) arrangeView
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    [addPic setBackgroundImage:[UIImage imageNamed:@"addPic.png"] forState:UIControlStateNormal];
-    self.image = [UIImage imageNamed:@"forest.png"];
     NSMutableArray* tiles = [self splitInTiles:self.image];
     int i = 0;
     for (UIButton *btn in self.imageView.subviews) {
@@ -70,6 +78,16 @@ ActiveButtons activeButtons;
         btn.frame = CGRectMake(i / colTiles * tileSize, i % colTiles * tileSize, tileSize, tileSize);
         ++i;
     }
+
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
+    self.image = [UIImage imageNamed:@"forest.png"];
+    [addPic setBackgroundImage:[UIImage imageNamed:@"addPic.png"] forState:UIControlStateNormal];
+    [self arrangeView];
 }
 
 - (void)didReceiveMemoryWarning

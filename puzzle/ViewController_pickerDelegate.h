@@ -15,6 +15,7 @@
                                                UINavigationControllerDelegate>) delegate;
 - (void) imagePickerController: (UIImagePickerController *) picker
  didFinishPickingMediaWithInfo: (NSDictionary *) info;
+
 @end
 
 @implementation ViewController (ext)
@@ -40,7 +41,7 @@
     
     // Hides the controls for moving & scaling pictures, or for
     // trimming movies. To instead show the controls, use YES.
-    mediaUI.allowsEditing = NO;
+    mediaUI.allowsEditing = YES;
     
     mediaUI.delegate = delegate;
     
@@ -48,40 +49,27 @@
     return YES;
 }
 
-
 - (void) imagePickerController: (UIImagePickerController *) picker
  didFinishPickingMediaWithInfo: (NSDictionary *) info {
     
-    NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];
-    UIImage *originalImage, *editedImage, *imageToUse;
-    
-    // Handle a still image picked from a photo album
-    if (CFStringCompare ((CFStringRef) mediaType, kUTTypeImage, 0)
-        == kCFCompareEqualTo) {
-        
-        editedImage = (UIImage *) [info objectForKey:
-                                   UIImagePickerControllerEditedImage];
-        originalImage = (UIImage *) [info objectForKey:
-                                     UIImagePickerControllerOriginalImage];
-        
-        if (editedImage) {
-            imageToUse = editedImage;
-        } else {
-            imageToUse = originalImage;
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self displayPickedMedia:info];
+    }];
+}
+
+- (void) displayPickedMedia:(NSDictionary *)info{
+    self.image = nil;
+    if([info[UIImagePickerControllerMediaType]isEqualToString:(NSString *) kUTTypeImage]){
+        UIImage *pickedImage = info[UIImagePickerControllerEditedImage];
+        //WHAT IS THIS?  I DUUNO
+        if(!pickedImage){
+            pickedImage = info[UIImagePickerControllerOriginalImage];
         }
-        // Do something with imageToUse
+        if(pickedImage) {
+            //TODO: remove hardcode, hooks for Retina
+            self.image = [self resizeImage:pickedImage scaledToSize:CGSizeMake(225, 225)];
+            [self arrangeView];
+        }
     }
-    
-    // Handle a movied picked from a photo album
-    if (CFStringCompare ((CFStringRef) mediaType, kUTTypeMovie, 0)
-        == kCFCompareEqualTo) {
-        
-        NSString *moviePath = [[info objectForKey:
-                                UIImagePickerControllerMediaURL] path];
-        
-        // Do something with the picked movie available at moviePath
-    }
-    
-    [[picker parentViewController] dismissModalViewControllerAnimated: YES];
 }
 @end
