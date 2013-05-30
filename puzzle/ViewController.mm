@@ -10,6 +10,7 @@
 #import "stuff.h"
 #import "animator.h"
 #import "ViewController_pickerDelegate.h"
+#import "jsonWorker.h"
 #import <stdlib.h>
 #import <vector>
 #import <AudioToolbox/AudioServices.h>
@@ -21,16 +22,18 @@
 
 @implementation ViewController
 
+//residence of side effects
 const int   rowTiles = 4,
             colTiles = 4,
             tileSize = 50;
 NSDate* startTime;
 float countdownSeconds = 30;
 NSString* timerFormat = @"0:%.0f";
-NSString* config = @"config.json";
-NSDictionary* json;
+NSString* imgHash;
+bool firstRun = false;
 
 ActiveButtons activeButtons;
+JSONWorker* jsonWorker;
 
 @synthesize addPic, topLabel, image, imageView, timer;
 
@@ -78,14 +81,28 @@ ActiveButtons activeButtons;
         btn.frame = CGRectMake(i / colTiles * tileSize, i % colTiles * tileSize, tileSize, tileSize);
         ++i;
     }
+    //hash image
+    //FIXME: what if JPG?
+    imgHash = sha(UIImagePNGRepresentation(self.image));
 
+
+    if(firstRun) {
+    //proces "last" key
+        countdownSeconds = [JSONWorker getTime:@"last"];
+    }
+    else {
+    //process "imgHash"
+        firstRun = YES;
+        countdownSeconds = [JSONWorker getTime:imgHash];
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.image = [UIImage imageNamed:@"forest.png"];
+    jsonWorker = [[JSONWorker alloc] init];
+    self.image = [UIImage imageNamed:@"last.png"];
     [addPic setBackgroundImage:[UIImage imageNamed:@"addPic.png"] forState:UIControlStateNormal];
     [self arrangeView];
 }
@@ -100,11 +117,6 @@ ActiveButtons activeButtons;
     [self permutateImages];
     timerFormat = @"0:%.0f";
     self.timer.textColor = [UIColor greenColor];
-    NSError* error;
-    NSString* pathToConfig = [[NSBundle mainBundle] pathForResource: [config stringByDeletingPathExtension] ofType:[config pathExtension]];
-    //I enjoy side effects!
-    json = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile: pathToConfig] options:kNilOptions error:&error];
-    countdownSeconds = [[json objectForKey:@"time"] floatValue];
     startTime = [NSDate date];
     self.timer.text = [NSString stringWithFormat:timerFormat, countdownSeconds];
     [NSTimer scheduledTimerWithTimeInterval:0.1 target:self

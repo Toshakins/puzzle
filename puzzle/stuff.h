@@ -19,11 +19,16 @@ NSInteger adapt(NSInteger byDefault, NSInteger took) {
 }
 
 
-NSData *sha1(NSData *data) {
-    unsigned char hash[CC_SHA256_DIGEST_LENGTH];
-    if ( CC_SHA256([data bytes], [data length], hash) ) {
-        NSData *sha1 = [NSData dataWithBytes:hash length:CC_SHA1_DIGEST_LENGTH];
-        return sha1;
+NSString *sha(NSData *data) {
+    unsigned char hash[CC_SHA512_DIGEST_LENGTH];
+    if ( CC_SHA512([data bytes], [data length], hash) ) {
+        NSMutableString* sha512 = [[NSMutableString alloc] init];
+        for (int i = 0 ; i < CC_SHA512_DIGEST_LENGTH ; ++i)
+        {
+            [sha512 appendFormat: @"%02x", hash[i]];
+        }
+            NSLog(@"HASHED: %@", sha512);
+        return sha512;
     }
     return nil;
 }

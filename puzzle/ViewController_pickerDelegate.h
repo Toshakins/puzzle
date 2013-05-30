@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "jsonWorker.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
 @interface ViewController (ext) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -67,9 +68,15 @@
         }
         if(pickedImage) {
             //TODO: remove hardcode, hooks for Retina
-            //http://developer.apple.com/library/ios/#documentation/AVFoundation/Reference/AVFoundation_Functions/Reference/reference.html
+            //FIXME: normal scale, not resize
             self.image = [self resizeImage:pickedImage scaledToSize:CGSizeMake(225, 225)];
-            NSLog(@"%f %f", pickedImage.size.height, pickedImage.size.width);
+            NSString* tmpHash = sha(UIImagePNGRepresentation(self.image));
+            if ([JSONWorker getTime:tmpHash]) {
+                NSLog(@"LOL YOU've also got it");
+            }
+            else {
+                [JSONWorker set: tmpHash withTime:45];
+            }
             [self arrangeView];
         }
     }
