@@ -10,5 +10,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface animator : NSObject
-+ (void) tap: (UIButton*) view also: (UIButton*) partner;
+//my software architecture sucks
++ (void) tap: (UIButton*) view also: (UIButton*) partner handler:(id) controller;
 @end

@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Smartbit user. All rights reserved.
 //
 
-#import "AlertViewHandler.h"
 #import "animator.h"
 #import "consts.h"
 #import "stuff.h"
@@ -24,14 +23,14 @@
     return r;
 }
 
-+ (void) untap:(UIButton*) view also: (UIButton*) partner {
++ (void) untap:(UIButton*) view also: (UIButton*) partner{
     [UIView animateWithDuration:0.25 animations:^{
         view.layer.transform = [self rotateY:0.0f];
         partner.layer.transform = [self rotateY:0.0f];
     }];
 }
 
-+ (void) tap: (UIButton*) view also:(UIButton *)partner {
++ (void) tap: (UIButton*) view also:(UIButton *)partner handler:(id) controller{
     [UIView animateWithDuration:0.25 animations:^{
             view.layer.transform = [self rotateY:90.0f];
             partner.layer.transform = [self rotateY:90.0f];
@@ -49,7 +48,7 @@
             if (isSolved(view.superview)) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congatulations!"
                                                                 message:@"You sucessfully solve puzzle."
-                                                               delegate:[[AlertViewHandler alloc] init]
+                                                               delegate:controller
                                                       cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil];
                 alert.tag = WIN;

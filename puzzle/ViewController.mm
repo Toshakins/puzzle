@@ -11,7 +11,6 @@
 #import "consts.h"
 #import "animator.h"
 #import "ViewController_pickerDelegate.h"
-#import "AlertViewHandler.h"
 #import <stdlib.h>
 #import <vector>
 #import <AudioToolbox/AudioServices.h>
@@ -37,6 +36,24 @@ ActiveButtons activeButtons;
 
 @synthesize addPic, topLabel, image, imageView, timer;
 
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSUserDefaults* config = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary* tmpDict = [[NSMutableDictionary alloc] init];
+    NSString* hashed = sha(UIImagePNGRepresentation(self.image));
+    float time = [[[config valueForKey:hashed] valueForKey:@"time"] floatValue] ;
+    if (time <= 0) time = 10;
+    if (alertView.tag == WIN) {
+        //decrease available time for @last and @hash
+        [tmpDict setValue:[NSNumber numberWithFloat:time - 5] forKey:@"time"];
+        [config setValue:tmpDict forKey:hashed];
+        [tmpDict setValue:UIImagePNGRepresentation(self.image) forKey:@"image"];
+        [config setValue:tmpDict forKey:@"last"];
+    }
+    if (alertView.tag == FAIL) {
+        ;
+    }
+}
 
 - (UIImage*)resizeImage:(UIImage*)img
               scaledToSize:(CGSize)newSize;
@@ -142,7 +159,7 @@ ActiveButtons activeButtons;
     UIButton* second = (UIButton*) [self.imageView viewWithTag: b.tag];
     
     //stunts
-    [animator tap:first also:second];    
+    [animator tap:first also:second handler:self];
 }
 
 - (IBAction)tileSelected:(id)sender {
@@ -172,7 +189,7 @@ ActiveButtons activeButtons;
         difference = 0;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@":-("
                                                         message:@"You didn't get in time. Try once more!"
-                                                       delegate:[[AlertViewHandler alloc] init]
+                                                       delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         alert.tag = FAIL;

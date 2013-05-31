@@ -72,11 +72,19 @@
             NSString* tmpHash = sha(UIImagePNGRepresentation(self.image));
             //update @"last" and @"hash" in NSUserDefaults
             NSUserDefaults* config = [NSUserDefaults standardUserDefaults];
-            NSMutableDictionary* tmpDict = [[NSMutableDictionary alloc] init];
-            [tmpDict setValue:[NSNumber numberWithFloat:45] forKey:@"time"];
-            [config setValue:tmpDict forKey:tmpHash];
-            [tmpDict setValue:UIImagePNGRepresentation(self.image) forKey:@"image"];
-            [config setValue:tmpDict forKey:@"last"];
+            NSMutableDictionary* tmpDict = [config objectForKey:sha(UIImagePNGRepresentation(self.image))];
+            if (tmpDict) {
+                [tmpDict setValue:UIImagePNGRepresentation(self.image) forKey:@"image"];
+                [config setValue:tmpDict forKey:@"last"];
+            }
+            else {
+                tmpDict = [[NSMutableDictionary alloc] init];
+                [tmpDict setValue:[NSNumber numberWithFloat:45] forKey:@"time"];
+                [config setValue:tmpDict forKey:tmpHash];
+                [tmpDict setValue:UIImagePNGRepresentation(self.image) forKey:@"image"];
+                [config setValue:tmpDict forKey:@"last"];
+            }
+            
             
             [self arrangeView];
         }

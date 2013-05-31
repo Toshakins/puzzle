@@ -12,7 +12,7 @@
 #import "activeButtons.h"
 
 //http://mobile.tutsplus.com/tutorials/iphone/uialertview/
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UIAlertViewDelegate>
 - (IBAction) pickBtn:(id)sender;
 - (NSMutableArray*) splitInTiles:(UIImage*) img;
 - (IBAction) tileSelected:(id)sender;
@@ -22,6 +22,7 @@
 - (void) arrangeView;
 - (UIImage*)resizeImage:(UIImage*)img
               scaledToSize:(CGSize)newSize;
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 @property (weak, nonatomic) IBOutlet UIButton *addPic;
 @property (weak, nonatomic) IBOutlet UILabel *topLabel;
