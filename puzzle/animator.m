@@ -52,6 +52,7 @@
                                                       cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil];
                 alert.tag = WIN;
+
                 [alert show];
             }
 

@@ -27,14 +27,13 @@ const int   rowTiles = 4,
             colTiles = 4,
             tileSize = 50;
 NSDate* startTime;
-float countdownSeconds = 30;
 NSString* timerFormat = @"0:%.0f";
 NSString* imgHash;
 bool firstRun = false;
 
 ActiveButtons activeButtons;
 
-@synthesize addPic, topLabel, image, imageView, timer;
+@synthesize addPic, topLabel, image, imageView, timer, countdownSeconds, solved;
 
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -46,12 +45,17 @@ ActiveButtons activeButtons;
     if (alertView.tag == WIN) {
         //decrease available time for @last and @hash
         [tmpDict setValue:[NSNumber numberWithFloat:time - 5] forKey:@"time"];
-        [config setValue:tmpDict forKey:hashed];
+        [config setObject:tmpDict forKey:hashed];
         [tmpDict setValue:UIImagePNGRepresentation(self.image) forKey:@"image"];
-        [config setValue:tmpDict forKey:@"last"];
+        [config setObject:tmpDict forKey:@"last"];
+        solved = YES;
     }
     if (alertView.tag == FAIL) {
-        ;
+        //increase, lul
+        [tmpDict setValue:[NSNumber numberWithFloat:time + 5] forKey:@"time"];
+        [config setObject:tmpDict forKey:hashed];
+        [tmpDict setValue:UIImagePNGRepresentation(self.image) forKey:@"image"];
+        [config setObject:tmpDict forKey:@"last"];
     }
 }
 
@@ -104,6 +108,7 @@ ActiveButtons activeButtons;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    solved = NO;
     NSUserDefaults* config;
     config = [NSUserDefaults standardUserDefaults];
     //check if "last" key exists
@@ -171,6 +176,7 @@ ActiveButtons activeButtons;
         [self swapButtons: activeButtons.front() withBitton:activeButtons.back()];
         activeButtons.clear();
     }
+    
     //TODO: scoreboard
 }
 
@@ -184,6 +190,9 @@ ActiveButtons activeButtons;
     NSTimeInterval elapsedTime = [currentDate timeIntervalSinceDate:startTime];
     
     NSTimeInterval difference = countdownSeconds - elapsedTime;
+    if (solved) {
+        [theTimer invalidate];
+    }
     if (difference <= 0) {
         [theTimer invalidate];
         difference = 0;

@@ -28,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *topLabel;
 @property (weak, nonatomic) IBOutlet UIView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *timer;
-@property (weak, nonatomic) UIImage *image;
+@property (nonatomic, retain) UIImage *image;
+@property float countdownSeconds;
+@property bool solved;
 
 @end

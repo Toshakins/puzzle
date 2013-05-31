@@ -58,7 +58,6 @@
 }
 
 - (void) displayPickedMedia:(NSDictionary *)info{
-    self.image = nil;
     if([info[UIImagePickerControllerMediaType]isEqualToString:(NSString *) kUTTypeImage]){
         UIImage *pickedImage = info[UIImagePickerControllerEditedImage];
         //WHAT IS THIS?  I DUUNO
@@ -72,17 +71,19 @@
             NSString* tmpHash = sha(UIImagePNGRepresentation(self.image));
             //update @"last" and @"hash" in NSUserDefaults
             NSUserDefaults* config = [NSUserDefaults standardUserDefaults];
-            NSMutableDictionary* tmpDict = [config objectForKey:sha(UIImagePNGRepresentation(self.image))];
+            NSMutableDictionary* tmpDict = [[config objectForKey:tmpHash] mutableCopy];
             if (tmpDict) {
                 [tmpDict setValue:UIImagePNGRepresentation(self.image) forKey:@"image"];
-                [config setValue:tmpDict forKey:@"last"];
+                [config setObject:tmpDict forKey:@"last"];
+                self.countdownSeconds = [[tmpDict valueForKey:@"time"]floatValue];
             }
             else {
                 tmpDict = [[NSMutableDictionary alloc] init];
                 [tmpDict setValue:[NSNumber numberWithFloat:45] forKey:@"time"];
                 [config setValue:tmpDict forKey:tmpHash];
                 [tmpDict setValue:UIImagePNGRepresentation(self.image) forKey:@"image"];
-                [config setValue:tmpDict forKey:@"last"];
+                [config setObject:tmpDict forKey:@"last"];
+                self.countdownSeconds = 45;
             }
             
             
