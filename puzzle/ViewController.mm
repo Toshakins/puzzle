@@ -11,12 +11,13 @@
 #import "consts.h"
 #import "animator.h"
 #import "ViewController_pickerDelegate.h"
+#import "AlertViewHandler.h"
 #import <stdlib.h>
 #import <vector>
 #import <AudioToolbox/AudioServices.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface ViewController ()
+@interface ViewController () <UIAlertViewDelegate>
 
 @end
 
@@ -171,7 +172,7 @@ ActiveButtons activeButtons;
         difference = 0;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@":-("
                                                         message:@"You didn't get in time. Try once more!"
-                                                       delegate:self
+                                                       delegate:[[AlertViewHandler alloc] init]
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         alert.tag = FAIL;

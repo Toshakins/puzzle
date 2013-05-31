@@ -9,7 +9,6 @@
 #ifndef __puzzle__activeButtons__
 #define __puzzle__activeButtons__
 
-#include <iostream>
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <queue>

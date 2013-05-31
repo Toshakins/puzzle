@@ -12,7 +12,7 @@
 #import "activeButtons.h"
 
 //http://mobile.tutsplus.com/tutorials/iphone/uialertview/
-@interface ViewController : UIViewController <UIAlertViewDelegate>
+@interface ViewController : UIViewController
 - (IBAction) pickBtn:(id)sender;
 - (NSMutableArray*) splitInTiles:(UIImage*) img;
 - (IBAction) tileSelected:(id)sender;

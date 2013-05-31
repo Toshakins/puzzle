@@ -9,6 +9,9 @@
 #ifndef puzzle_consts_h
 #define puzzle_consts_h
 
-const int FAIL = 1, WIN = 2;
+//it can't consts
+//const int FAIL = 1, WIN = 2;
+#define FAIL 1
+#define WIN  2
 
 #endif

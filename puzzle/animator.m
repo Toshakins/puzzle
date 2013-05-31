@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Smartbit user. All rights reserved.
 //
 
+#import "AlertViewHandler.h"
 #import "animator.h"
 #import "consts.h"
 #import "stuff.h"
@@ -48,7 +49,7 @@
             if (isSolved(view.superview)) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congatulations!"
                                                                 message:@"You sucessfully solve puzzle."
-                                                               delegate:self
+                                                               delegate:[[AlertViewHandler alloc] init]
                                                       cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil];
                 alert.tag = WIN;
