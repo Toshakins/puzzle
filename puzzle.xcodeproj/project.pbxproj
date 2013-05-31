@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C5304151758E72000DCBCD2 /* AlertViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5304141758E72000DCBCD2 /* AlertViewHandler.m */; };
 		7C5F0D39174661790027F6B2 /* activeButtons.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F0D37174661790027F6B2 /* activeButtons.mm */; };
 		7C706BD417425B3E00C4879D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C706BD317425B3E00C4879D /* UIKit.framework */; };
 		7C706BD617425B3E00C4879D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C706BD517425B3E00C4879D /* Foundation.framework */; };
@@ -29,8 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7C53040F1758D87700DCBCD2 /* ViewController_UIAlertViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController_UIAlertViewDelegate.h; sourceTree = "<group>"; };
 		7C5304101758E26300DCBCD2 /* consts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = consts.h; sourceTree = "<group>"; };
+		7C5304111758E4F200DCBCD2 /* AlertViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewHandler.h; sourceTree = "<group>"; };
+		7C5304141758E72000DCBCD2 /* AlertViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewHandler.m; sourceTree = "<group>"; };
 		7C5F0D37174661790027F6B2 /* activeButtons.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = activeButtons.mm; sourceTree = "<group>"; };
 		7C5F0D38174661790027F6B2 /* activeButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = activeButtons.h; sourceTree = "<group>"; };
 		7C637FF51754F5AD00DF4CDB /* stuff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stuff.h; sourceTree = "<group>"; };
@@ -84,7 +86,6 @@
 			children = (
 				7C706BF117425B3E00C4879D /* ViewController.h */,
 				7C706BF217425B3E00C4879D /* ViewController.mm */,
-				7C53040F1758D87700DCBCD2 /* ViewController_UIAlertViewDelegate.h */,
 				7CAEC10617562DA300C1ED66 /* ViewController_pickerDelegate.h */,
 			);
 			name = Controller;
@@ -100,6 +101,8 @@
 				7C8D57A91754CF620083758D /* animator.m */,
 				7C637FF51754F5AD00DF4CDB /* stuff.h */,
 				7C5304101758E26300DCBCD2 /* consts.h */,
+				7C5304141758E72000DCBCD2 /* AlertViewHandler.m */,
+				7C5304111758E4F200DCBCD2 /* AlertViewHandler.h */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				7C706BF317425B3E00C4879D /* ViewController.mm in Sources */,
 				7C5F0D39174661790027F6B2 /* activeButtons.mm in Sources */,
 				7C8D57AA1754CF620083758D /* animator.m in Sources */,
+				7C5304151758E72000DCBCD2 /* AlertViewHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
