@@ -7,6 +7,9 @@
 //
 
 #import "animator.h"
+#import "consts.h"
+#import "stuff.h"
+
 
 @implementation animator
 
@@ -22,8 +25,8 @@
 
 + (void) untap:(UIButton*) view also: (UIButton*) partner {
     [UIView animateWithDuration:0.25 animations:^{
-        view.layer.transform = [self rotateY:180.0f];
-        partner.layer.transform = [self rotateY:180.0f];
+        view.layer.transform = [self rotateY:0.0f];
+        partner.layer.transform = [self rotateY:0.0f];
     }];
 }
 
@@ -42,6 +45,16 @@
             [partner setBackgroundImage:t.currentBackgroundImage forState:UIControlStateNormal];
             partner.tag = t.tag;
             [self untap:view also: partner];
+            if (isSolved(view.superview)) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congatulations!"
+                                                                message:@"You sucessfully solve puzzle."
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                alert.tag = WIN;
+                [alert show];
+            }
+
         }
     ];
 

@@ -8,9 +8,9 @@
 
 #import "ViewController.h"
 #import "stuff.h"
+#import "consts.h"
 #import "animator.h"
 #import "ViewController_pickerDelegate.h"
-#import "jsonWorker.h"
 #import <stdlib.h>
 #import <vector>
 #import <AudioToolbox/AudioServices.h>
@@ -33,7 +33,6 @@ NSString* imgHash;
 bool firstRun = false;
 
 ActiveButtons activeButtons;
-JSONWorker* jsonWorker;
 
 @synthesize addPic, topLabel, image, imageView, timer;
 
@@ -81,28 +80,27 @@ JSONWorker* jsonWorker;
         btn.frame = CGRectMake(i / colTiles * tileSize, i % colTiles * tileSize, tileSize, tileSize);
         ++i;
     }
-    //hash image
-    //FIXME: what if JPG?
-    imgHash = sha(UIImagePNGRepresentation(self.image));
-
-
-    if(firstRun) {
-    //proces "last" key
-        countdownSeconds = [JSONWorker getTime:@"last"];
-    }
-    else {
-    //process "imgHash"
-        firstRun = YES;
-        countdownSeconds = [JSONWorker getTime:imgHash];
-    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    jsonWorker = [[JSONWorker alloc] init];
-    self.image = [UIImage imageNamed:@"last.png"];
+    NSUserDefaults* config;
+    config = [NSUserDefaults standardUserDefaults];
+    //check if "last" key exists
+    NSMutableDictionary* last = [[config dictionaryForKey:@"last"] mutableCopy];
+    if (last) {
+        self.image = [UIImage imageWithData:[last valueForKey:@"image"]];
+        countdownSeconds = [[last valueForKey:@"time"] floatValue];
+    }
+    else {
+        self.image = [UIImage imageNamed:@"last.png"];
+        last = [[NSMutableDictionary alloc] init];
+        [last setValue:UIImagePNGRepresentation(self.image) forKey:@"image"];
+        [last setValue:[NSNumber numberWithFloat:45] forKey:@"time"];
+        [config setValue:last forKey:@"last"];
+    }
     [addPic setBackgroundImage:[UIImage imageNamed:@"addPic.png"] forState:UIControlStateNormal];
     [self arrangeView];
 }
@@ -143,7 +141,7 @@ JSONWorker* jsonWorker;
     UIButton* second = (UIButton*) [self.imageView viewWithTag: b.tag];
     
     //stunts
-    [animator tap:first also:second];
+    [animator tap:first also:second];    
 }
 
 - (IBAction)tileSelected:(id)sender {
@@ -155,24 +153,7 @@ JSONWorker* jsonWorker;
         [self swapButtons: activeButtons.front() withBitton:activeButtons.back()];
         activeButtons.clear();
     }
-    if ([self isSolved]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congatulations!"
-                                                        message:@"You sucessfully solve puzzle."
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-    }
-     //TODO: scoreboard
-}
-
-- (bool) isSolved {
-    for (int i = 1; i < self.imageView.subviews.count; ++i) {
-        if ( ((UIButton*) self.imageView.subviews[i]).tag - ((UIButton*) self.imageView.subviews[i - 1]).tag != 1) {
-            return false;
-        }
-    }
-    return true;
+    //TODO: scoreboard
 }
 
 - (IBAction)addPic:(id)sender {
@@ -190,9 +171,10 @@ JSONWorker* jsonWorker;
         difference = 0;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@":-("
                                                         message:@"You didn't get in time. Try once more!"
-                                                       delegate:nil
+                                                       delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
+        alert.tag = FAIL;
         [alert show];
         //TODO: restart on OK
 

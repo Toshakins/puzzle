@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "jsonWorker.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
 @interface ViewController (ext) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -71,12 +70,14 @@
             //FIXME: normal scale, not resize
             self.image = [self resizeImage:pickedImage scaledToSize:CGSizeMake(225, 225)];
             NSString* tmpHash = sha(UIImagePNGRepresentation(self.image));
-            if ([JSONWorker getTime:tmpHash]) {
-                NSLog(@"LOL YOU've also got it");
-            }
-            else {
-                [JSONWorker set: tmpHash withTime:45];
-            }
+            //update @"last" and @"hash" in NSUserDefaults
+            NSUserDefaults* config = [NSUserDefaults standardUserDefaults];
+            NSMutableDictionary* tmpDict = [[NSMutableDictionary alloc] init];
+            [tmpDict setValue:[NSNumber numberWithFloat:45] forKey:@"time"];
+            [config setValue:tmpDict forKey:tmpHash];
+            [tmpDict setValue:UIImagePNGRepresentation(self.image) forKey:@"image"];
+            [config setValue:tmpDict forKey:@"last"];
+            
             [self arrangeView];
         }
     }

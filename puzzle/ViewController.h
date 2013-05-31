@@ -18,7 +18,6 @@
 - (IBAction) tileSelected:(id)sender;
 - (void) permutateImages;
 - (void) swapButtons:(ImageTag) a withBitton:(ImageTag) b;
-- (bool) isSolved;
 - (IBAction)addPic:(id)sender;
 - (void) arrangeView;
 - (UIImage*)resizeImage:(UIImage*)img

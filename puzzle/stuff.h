@@ -32,4 +32,13 @@ NSString *sha(NSData *data) {
     }
     return nil;
 }
+
+bool isSolved(UIView* that) {
+    for (int i = 1; i < that.subviews.count; ++i) {
+        if ( ((UIButton*) that.subviews[i]).tag - ((UIButton*) that.subviews[i - 1]).tag != 1) {
+            return false;
+        }
+    }
+    return true;
+}
 #endif
